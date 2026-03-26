@@ -42,7 +42,7 @@ export default function TimelineAnimated() {
             </div>
 
             {/* Year badge — FIX #2: smaller circle */}
-            <div className="w-12 h-12 rounded-full bg-amber-500 border-4 border-amber-100 flex items-center justify-center text-white font-bold text-xs z-10 shrink-0 shadow-md">
+            <div className="w-8 h-8 rounded-full bg-amber-500 border-4 border-amber-100 flex items-center justify-center text-white font-bold text-xs z-10 shrink-0 shadow-md">
               {milestone.year}
             </div>
 

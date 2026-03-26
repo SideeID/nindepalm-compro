@@ -2,6 +2,14 @@
 import NavbarMobile from '../interactive/NavbarMobile.tsx';
 import { Button } from '../ui/button';
 import { COMPANY_NAME, WHATSAPP_LINK } from '@/lib/constants';
+
+const navLinks = [
+  { href: '#home', label: 'Home' },
+  { href: '#about', label: 'About' },
+  { href: '#products', label: 'Products' },
+  { href: '#vision', label: 'Vision' },
+  { href: '#contact', label: 'Contact' },
+];
 ---
 
 <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 bg-transparent border-b border-transparent">
@@ -13,11 +21,15 @@ import { COMPANY_NAME, WHATSAPP_LINK } from '@/lib/constants';
 
     <!-- Desktop Nav -->
     <div class="hidden md:flex gap-8 items-center">
-      <a href="#home" class="text-amber-900 font-bold border-b-2 border-amber-600 pb-1">Home</a>
-      <a href="#about" class="text-amber-800/80 hover:text-amber-900 transition-colors">About</a>
-      <a href="#products" class="text-amber-800/80 hover:text-amber-900 transition-colors">Products</a>
-      <a href="#vision" class="text-amber-800/80 hover:text-amber-900 transition-colors">Vision</a>
-      <a href="#contact" class="text-amber-800/80 hover:text-amber-900 transition-colors">Contact</a>
+      {navLinks.map(link => (
+        <a
+          href={link.href}
+          data-navlink={link.href.replace('#', '')}
+          class="nav-link text-amber-800/80 hover:text-amber-900 transition-colors text-sm font-medium pb-0.5 border-b-2 border-transparent"
+        >
+          {link.label}
+        </a>
+      ))}
     </div>
 
     <div class="flex items-center gap-4">
@@ -32,7 +44,7 @@ import { COMPANY_NAME, WHATSAPP_LINK } from '@/lib/constants';
 </nav>
 
 <script>
-  // Scroll effect (bg transparan -> bg blur)
+  // ─── Scroll-to-blur effect ───────────────────────────────────────────────
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 20) {
@@ -43,4 +55,36 @@ import { COMPANY_NAME, WHATSAPP_LINK } from '@/lib/constants';
       navbar?.classList.add('bg-transparent', 'border-transparent');
     }
   });
+
+  // ─── Active link on scroll (IntersectionObserver) ────────────────────────
+  const sections = document.querySelectorAll<HTMLElement>('section[id]');
+  const navLinks = document.querySelectorAll<HTMLAnchorElement>('a[data-navlink]');
+
+  const ACTIVE_CLASSES  = ['text-amber-900', 'font-bold', 'border-amber-600'];
+  const DEFAULT_CLASSES = ['text-amber-800/80', 'font-medium', 'border-transparent'];
+
+  function setActive(id: string) {
+    navLinks.forEach(link => {
+      const isActive = link.dataset.navlink === id;
+      ACTIVE_CLASSES.forEach(cls => link.classList.toggle(cls, isActive));
+      DEFAULT_CLASSES.forEach(cls => link.classList.toggle(cls, !isActive));
+    });
+  }
+
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setActive(entry.target.id);
+        }
+      });
+    },
+    { rootMargin: '-40% 0px -55% 0px', threshold: 0 }
+  );
+
+  sections.forEach(section => observer.observe(section));
+
+  // Set initial active based on hash or default to 'home'
+  const initial = window.location.hash.replace('#', '') || 'home';
+  setActive(initial);
 </script>
