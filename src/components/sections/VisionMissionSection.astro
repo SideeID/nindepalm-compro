@@ -1,0 +1,70 @@
+---
+import { Users, Leaf, BadgeCheck, ScanLine } from 'lucide-react';
+
+// FIX #4: Relevant icons per mission item
+const missions = [
+  { 
+    title: "Empowerment", 
+    desc: "Empowering over 500 local palm farmers through fair-trade partnerships and community support.",
+    icon: Users
+  },
+  { 
+    title: "Sustainability", 
+    desc: "Implementing zero-waste production methods in our modern processing facilities.",
+    icon: Leaf
+  },
+  { 
+    title: "Excellence", 
+    desc: "Ensuring consistent 100% organic certification for all global export products.",
+    icon: BadgeCheck
+  },
+  { 
+    title: "Traceability", 
+    desc: "Pioneering digital traceability from the tree to the end consumer for total transparency.",
+    icon: ScanLine
+  }
+];
+---
+
+<section id="vision" class="py-24 bg-amber-100 relative overflow-hidden">
+  <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-amber-200 to-transparent"></div>
+  <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-amber-200 to-transparent"></div>
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <!-- Vision Quote -->
+    <div class="flex flex-col items-center text-center mb-20">
+      <span class="text-amber-600 font-bold tracking-[0.3em] uppercase text-xs mb-6 block">Our Purpose</span>
+      <div class="max-w-3xl">
+        <h2 class="text-xl md:text-2xl italic font-semibold text-amber-800 leading-[1.4]" style="font-family: 'Playfair Display', serif;">
+          &ldquo;To become a leading force in sustainable agriculture, where every grain of sugar tells a story of fairness, quality, and ecological balance.&rdquo;
+        </h2>
+        <div class="mt-8 flex justify-center items-center gap-4">
+          <div class="h-px w-10 bg-amber-300"></div>
+          <span class="text-amber-800/60 font-medium tracking-widest uppercase text-[10px]">The Nindepalm Vision</span>
+          <div class="h-px w-10 bg-amber-300"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mission Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      {missions.map(mission => {
+        const Icon = mission.icon;
+        return (
+          <div class="group">
+            <div class="mb-5 flex flex-col items-start gap-3">
+              <!-- FIX #4: smaller icon container + relevant icon -->
+              <div class="w-10 h-10 rounded-lg bg-white border border-amber-200 flex items-center justify-center text-amber-600 shadow-sm group-hover:bg-amber-600 group-hover:text-white transition-all duration-400">
+                <Icon className="w-5 h-5" />
+              </div>
+              <div class="h-px w-full bg-amber-200/50"></div>
+            </div>
+            <h4 class="text-amber-900 font-bold text-xs uppercase tracking-wider mb-2">{mission.title}</h4>
+            <p class="text-amber-800/80 text-sm leading-relaxed">{mission.desc}</p>
+          </div>
+        )
+      })}
+    </div>
+  </div>
+</section>

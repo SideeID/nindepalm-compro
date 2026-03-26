@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://nindepalm.com/sitemap-index.xml

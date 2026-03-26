@@ -1,0 +1,16 @@
+---
+import StatsCounter from '../interactive/StatsCounter.tsx';
+---
+
+<section class="bg-amber-950 py-24 relative overflow-hidden">
+  <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1541584949219-48283aebbb1d')] bg-cover bg-center opacity-10 mix-blend-overlay"></div>
+  <div class="max-w-container mx-auto px-6 relative z-10">
+    <div class="mb-14 text-center max-w-2xl mx-auto">
+      <h2 class="text-3xl font-bold text-amber-50 mb-3" style="font-family: 'Playfair Display', serif;">Production Capacity</h2>
+      <p class="text-amber-200/80 text-sm md:text-base">Scaling traditional wisdom with modern industrial efficiency.</p>
+    </div>
+
+    <!-- React Island -->
+    <StatsCounter client:visible />
+  </div>
+</section>

@@ -1,0 +1,46 @@
+---
+import NavbarMobile from '../interactive/NavbarMobile.tsx';
+import { Button } from '../ui/button';
+import { COMPANY_NAME, WHATSAPP_LINK } from '@/lib/constants';
+---
+
+<nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 bg-transparent border-b border-transparent">
+  <div class="max-w-container mx-auto px-6 py-3 flex justify-between items-center">
+    <!-- Brand -->
+    <a href="/" class="font-heading font-bold text-xl text-amber-700 tracking-tight">
+      {COMPANY_NAME}
+    </a>
+
+    <!-- Desktop Nav -->
+    <div class="hidden md:flex gap-8 items-center">
+      <a href="#home" class="text-amber-900 font-bold border-b-2 border-amber-600 pb-1">Home</a>
+      <a href="#about" class="text-amber-800/80 hover:text-amber-900 transition-colors">About</a>
+      <a href="#products" class="text-amber-800/80 hover:text-amber-900 transition-colors">Products</a>
+      <a href="#vision" class="text-amber-800/80 hover:text-amber-900 transition-colors">Vision</a>
+      <a href="#contact" class="text-amber-800/80 hover:text-amber-900 transition-colors">Contact</a>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <a href={WHATSAPP_LINK} target="_blank" class="hidden md:block">
+        <Button className="bg-amber-500 hover:bg-amber-600 text-white rounded-md px-5 py-2 h-auto text-sm font-semibold shadow-sm transition-transform active:scale-95">
+          Hubungi Kami
+        </Button>
+      </a>
+      <NavbarMobile client:load />
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Scroll effect (bg transparan -> bg blur)
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) {
+      navbar?.classList.add('bg-amber-50/95', 'backdrop-blur-md', 'shadow-sm', 'border-amber-200/50');
+      navbar?.classList.remove('bg-transparent', 'border-transparent');
+    } else {
+      navbar?.classList.remove('bg-amber-50/95', 'backdrop-blur-md', 'shadow-sm', 'border-amber-200/50');
+      navbar?.classList.add('bg-transparent', 'border-transparent');
+    }
+  });
+</script>

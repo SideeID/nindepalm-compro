@@ -1,0 +1,38 @@
+---
+import HeroAnimated from '../interactive/HeroAnimated.tsx';
+---
+
+<section id="home" class="relative min-h-screen flex flex-col justify-center overflow-hidden">
+  <!-- Gradient overlay -->
+  <div class="absolute inset-0 bg-gradient-to-br from-[#4d2900] via-[#8d4b00] to-[#2c1600] z-0"></div>
+  <!-- Background image -->
+  <div class="absolute inset-0 opacity-20 bg-cover bg-center mix-blend-overlay" style="background-image: url('/images/bg-hero.png');"></div>
+
+  <div class="max-w-7xl mx-auto px-6 relative z-10 pt-20 w-full">
+    <HeroAnimated client:load />
+
+    <!-- Stats Row -->
+    <div class="grid grid-cols-3 gap-4 md:gap-8 mt-16 md:mt-24 border-t border-white/10 pt-10 md:pt-12">
+      <div class="flex items-center gap-3 md:gap-6">
+        <div class="text-3xl md:text-5xl font-bold text-amber-200 font-heading">2+</div>
+        <div class="text-amber-100/70 text-[10px] md:text-sm tracking-wide uppercase leading-tight">Ton/Day<br/>Production</div>
+      </div>
+      <div class="flex items-center gap-3 md:gap-6">
+        <div class="text-3xl md:text-5xl font-bold text-amber-200 font-heading">3</div>
+        <div class="text-amber-100/70 text-[10px] md:text-sm tracking-wide uppercase leading-tight">Signature<br/>Products</div>
+      </div>
+      <div class="flex items-center gap-3 md:gap-6">
+        <div class="text-3xl md:text-5xl font-bold text-amber-200 font-heading">2009</div>
+        <div class="text-amber-100/70 text-[10px] md:text-sm tracking-wide uppercase leading-tight">Preserving<br/>Tradition Since</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce flex flex-col items-center">
+    <span class="text-white/60 text-xs mb-2 uppercase tracking-widest">Discover</span>
+    <svg class="w-6 h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+    </svg>
+  </div>
+</section>

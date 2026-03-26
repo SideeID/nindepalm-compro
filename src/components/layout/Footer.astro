@@ -1,0 +1,50 @@
+---
+import { COMPANY_NAME, WHATSAPP_LINK } from '@/lib/constants';
+import { Globe, Mail, Share2 } from 'lucide-react';
+---
+
+<footer class="bg-amber-950 text-white py-10 px-6 border-t border-white/5">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-12 w-full max-w-container mx-auto">
+    <div class="space-y-6">
+      <div class="font-heading text-2xl font-bold text-amber-500">{COMPANY_NAME}</div>
+      <p class="text-amber-100/60 font-body text-sm tracking-wide max-w-xs leading-relaxed">
+        A leading producer and exporter of premium organic coconut sugar. We prioritize tradition, quality, and fair trade for a better future.
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-2 gap-8">
+      <div class="space-y-4">
+        <h4 class="text-amber-100 font-bold text-sm uppercase tracking-widest">Navigation</h4>
+        <nav class="flex flex-col gap-2">
+          <a href="#home" class="text-amber-100/60 hover:text-amber-100 transition-colors hover:underline decoration-amber-500 underline-offset-4 text-sm tracking-wide">Home</a>
+          <a href="#about" class="text-amber-100/60 hover:text-amber-100 transition-colors hover:underline decoration-amber-500 underline-offset-4 text-sm tracking-wide">About</a>
+          <a href="#products" class="text-amber-100/60 hover:text-amber-100 transition-colors hover:underline decoration-amber-500 underline-offset-4 text-sm tracking-wide">Products</a>
+        </nav>
+      </div>
+      <div class="space-y-4">
+        <h4 class="text-amber-100 font-bold text-sm uppercase tracking-widest">Support</h4>
+        <nav class="flex flex-col gap-2">
+          <a href="#contact" class="text-amber-100/60 hover:text-amber-100 transition-colors hover:underline decoration-amber-500 underline-offset-4 text-sm tracking-wide">Contact</a>
+          <a href={WHATSAPP_LINK} target="_blank" class="text-amber-100/60 hover:text-amber-100 transition-colors hover:underline decoration-amber-500 underline-offset-4 text-sm tracking-wide">WhatsApp</a>
+        </nav>
+      </div>
+    </div>
+    
+    <div class="space-y-6 md:text-right">
+      <p class="text-amber-100/60 text-sm tracking-wide">
+        &copy; {new Date().getFullYear()} {COMPANY_NAME}. Tradition Preserved. Taste Delivered.
+      </p>
+      <div class="flex md:justify-end gap-2 opacity-80 hover:opacity-100 transition-opacity">
+        <div class="w-6 h-6 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 cursor-pointer">
+          <Globe className="text-amber-500 w-3 h-3" />
+        </div>
+        <div class="w-6 h-6 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 cursor-pointer">
+          <Mail className="text-amber-500 w-3 h-3" />
+        </div>
+        <div class="w-6 h-6 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 cursor-pointer">
+          <Share2 className="text-amber-500 w-3 h-3" />
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
